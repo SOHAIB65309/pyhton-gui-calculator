@@ -20,7 +20,7 @@ entry2.pack()
 result = tk.StringVar()
 label = tk.Label(root, textvariable=result) 
 label.pack()
-
+  
 button = tk.Button(root, text="Add", command=calculate_sum) 
 button.pack()
 
