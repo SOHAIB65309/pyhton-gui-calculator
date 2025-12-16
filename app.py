@@ -15,6 +15,13 @@ def calculate_subtraction():
         result.set(num1 - num2)
     except ValueError:
         result.set("Invalid input")
+def calculate_mul():
+    try:
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
+        result.set(num1 * num2)
+    except ValueError:
+        result.set("Invalid input")
 
 root = tk.Tk()
 root.title("Simple Calculator")
@@ -46,7 +53,9 @@ label_result.pack()
 button_add = tk.Button(root, text="Add", command=calculate_sum)
 button_add.pack()
 
-button_sub = tk.Button(root, text="Subtract", command=calculate_subtraction)
+button_sub = tk.Button(root, text="subtraction", command=calculate_subtraction)
+button_sub.pack()
+button_sub = tk.Button(root, text="mul", command=calculate_mul)
 button_sub.pack()
 
 root.mainloop()
