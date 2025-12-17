@@ -1,19 +1,32 @@
 import tkinter as tk
 
 def calculate():
-    try:
-        num1 = float(entry1.get())
-        num2 = float(entry2.get())
-        operation = entry_op.get().lower()
+    val1 = entry1.get().strip()
+    val2 = entry2.get().strip()
+    operation = entry_op.get().lower().strip()
 
+    # 1. Check for empty inputs
+    if not val1 or not val2:
+        result.set("Error: Missing numbers")
+        return
+
+    try:
+        # 2. Attempt numeric conversion
+        num1 = float(val1)
+        num2 = float(val2)
+
+        # 3. Logic for operations
         if operation == "add":
             result.set(num1 + num2)
         elif operation == "sub":
             result.set(num1 - num2)
+        elif operation == "":
+            result.set("Error: Choose an operation")
         else:
-            result.set("Invalid operation")
+            result.set(f"Unknown: '{operation}'")
+
     except ValueError:
-        result.set("Invalid input")
+        result.set("Error: Use numbers only")
 
 root = tk.Tk()
 root.title("Simple Calculator")
