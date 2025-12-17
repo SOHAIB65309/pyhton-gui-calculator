@@ -1,25 +1,17 @@
 import tkinter as tk
 
-def calculate_sum():
+def calculate():
     try:
         num1 = float(entry1.get())
         num2 = float(entry2.get())
-        result.set(num1 + num2)
-    except ValueError:
-        result.set("Invalid input")
+        operation = entry_op.get().lower()
 
-def calculate_subtraction():
-    try:
-        num1 = float(entry1.get())
-        num2 = float(entry2.get())
-        result.set(num1 - num2)
-    except ValueError:
-        result.set("Invalid input")
-def calculate_mul():
-    try:
-        num1 = float(entry1.get())
-        num2 = float(entry2.get())
-        result.set(num1 * num2)
+        if operation == "add":
+            result.set(num1 + num2)
+        elif operation == "sub":
+            result.set(num1 - num2)
+        else:
+            result.set("Invalid operation")
     except ValueError:
         result.set("Invalid input")
 
@@ -37,25 +29,19 @@ label2.pack()
 entry2 = tk.Entry(root)
 entry2.pack()
 
+label_op = tk.Label(root, text="Enter Operation (add / sub):")
+label_op.pack()
+entry_op = tk.Entry(root)
+entry_op.pack()
 
 label_result_text = tk.Label(root, text="Result:")
 label_result_text.pack()
 
 result = tk.StringVar()
-label = tk.Label(root, textvariable=result) 
+label = tk.Label(root, textvariable=result)
 label.pack()
-  
-button = tk.Button(root, text="Add", command=calculate_sum) 
-button.pack()
-label_result = tk.Label(root, textvariable=result)
-label_result.pack()
 
-button_add = tk.Button(root, text="Add", command=calculate_sum)
-button_add.pack()
-
-button_sub = tk.Button(root, text="subtraction", command=calculate_subtraction)
-button_sub.pack()
-button_sub = tk.Button(root, text="mul", command=calculate_mul)
-button_sub.pack()
+button_calc = tk.Button(root, text="Calculate", command=calculate)
+button_calc.pack()
 
 root.mainloop()
